@@ -37,7 +37,7 @@ User.prototype.login = function(){
     return new Promise((resolve, reject) => {
         this.cleanUp()
         usersCollection.findOne({ username: this.data.username }).then((attemptedUser) => {
-            if (attemptedUser && bcrypt.compareSync(this.data.password, attemptedUser, attemptedUser.password)) {
+            if (attemptedUser && bcrypt.compareSync(this.data.password, attemptedUser.password)) {
                 resolve("Congrats!!!")
             } else {
                 reject("Invalid username / password")
